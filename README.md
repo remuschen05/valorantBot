@@ -1,16 +1,9 @@
-# Getting Started app for Discord
-
-This project contains a basic rock-paper-scissors-style Discord app written in JavaScript, built for the [getting started guide](https://discord.com/developers/docs/getting-started).
-
-![Demo of app](/assets/getting-started-demo.gif?raw=true)
-
-> ✨ A version of this code is also hosted **[on Glitch 🎏](https://glitch.com/~getting-started-discord)** and **[on Replit 🌀](https://replit.com/@shaydewael/discord-example-app)**
+A quick HTTP request program to Valorant's API endpoints that uses Asynchronous Javascript to get the current status of the Valorant game client. Some additional functionality is the ability to quickly obtain a player's PUUID as well as the current act which are parameters that are needed to make other requests and gather more metadata on the Valorant API, however a formal request must be made to Riot in order to authorize your API key in order to be able to use those endpoints.
 
 ## Project structure
-Below is a basic overview of the project structure:
 
 ```
-├── examples    -> short, feature-specific sample apps
+├── examples    -> short, feature-specific sample apps cloned from the getting started app in Discord's documentation.
 │   ├── button.js
 │   ├── command.js
 │   ├── modal.js
@@ -19,6 +12,7 @@ Below is a basic overview of the project structure:
 ├── app.js      -> main entrypoint for app
 ├── commands.js -> slash command payloads + helpers
 ├── game.js     -> logic specific to RPS
+├── sandbox.js  -> main valorant api logic
 ├── utils.js    -> utility functions and enums
 ├── package.json
 ├── README.md
@@ -28,22 +22,27 @@ Below is a basic overview of the project structure:
 ## Running app locally
 
 Before you start, you'll need to [create a Discord app](https://discord.com/developers/applications) with the proper permissions:
+
 - `applications.commands`
 - `bot` (with Send Messages enabled)
 
 Configuring the app is covered in detail in the [getting started guide](https://discord.com/developers/docs/getting-started).
+
 ### Setup project
 
 First clone the project:
+
 ```
-git clone https://github.com/discord/discord-example-app.git
+git clone https://github.com/remuschen05/valorantBot
 ```
 
 Then navigate to its directory and install dependencies:
+
 ```
-cd discord-example-app
+cd valorantBot
 npm install
 ```
+
 ### Get app credentials
 
 Fetch the credentials from your app's settings and add them to a `.env` file (see `.env.sample` for an example). You'll need your app ID (`APP_ID`), server ID (`GUILD_ID`), bot token (`DISCORD_TOKEN`), and public key (`PUBLIC_KEY`).
@@ -51,6 +50,8 @@ Fetch the credentials from your app's settings and add them to a `.env` file (se
 Fetching credentials is covered in detail in the [getting started guide](https://discord.com/developers/docs/getting-started).
 
 > 🔑 Environment variables can be added to the `.env` file in Glitch or when developing locally, and in the Secrets tab in Replit (the lock icon on the left).
+
+Fetching credentials for the Valorant API can be located on Riot's developer page @ (https://developer.riotgames.com/) where an API key can be generated to be put into the .env file.
 
 ### Run the app
 
@@ -92,6 +93,7 @@ On the **General Information** tab, there will be an **Interactions Endpoint URL
 Click **Save Changes**, and your app should be ready to run 🚀
 
 ## Other resources
+
 - Read **[the documentation](https://discord.com/developers/docs/intro)** for in-depth information about API features.
 - Browse the `examples/` folder in this project for smaller, feature-specific code examples
 - Join the **[Discord Developers server](https://discord.gg/discord-developers)** to ask questions about the API, attend events hosted by the Discord API team, and interact with other devs.
