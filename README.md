@@ -1,4 +1,11 @@
+## Getting Started
+
 A quick HTTP request program to Valorant's API endpoints that uses Asynchronous Javascript to get the current status of the Valorant game client. Some additional functionality is the ability to quickly obtain a player's PUUID as well as the current act which are parameters that are needed to make other requests and gather more metadata on the Valorant API, however a formal request must be made to Riot in order to authorize your API key in order to be able to use those endpoints.
+
+Below I have left the documentation for Discord's Getting Started guide incase you are using this so that it is easier to find the documentation to fill the needed parameters in the .env file.
+
+Thanks!
+Alex
 
 ## Project structure
 
