@@ -7,13 +7,19 @@ import {
   MessageComponentTypes,
   ButtonStyleTypes,
 } from 'discord-interactions';
-import { VerifyDiscordRequest, getRandomEmoji, DiscordRequest } from './utils.js';
+import {
+  VerifyDiscordRequest,
+  getRandomEmoji,
+  DiscordRequest,
+} from './utils.js';
 import { getShuffledOptions, getResult } from './game.js';
 import {
   CHALLENGE_COMMAND,
   TEST_COMMAND,
+  VALORANT_STATUS,
   HasGuildCommands,
 } from './commands.js';
+import { getValorantStatus } from './sandbox.js';
 
 // Create an express app
 const app = express();
@@ -88,6 +94,16 @@ app.post('/interactions', async function (req, res) {
               ],
             },
           ],
+        },
+      });
+    }
+    if (name === 'status') {
+      const userID = req.body.member.user.id;
+      return res.send({
+        type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+        data: {
+          // Fetches a random emoji to send from a helper function
+          content: 'Status: ' + (await getValorantStatus()),
         },
       });
     }
@@ -182,5 +198,6 @@ app.listen(PORT, () => {
   HasGuildCommands(process.env.APP_ID, process.env.GUILD_ID, [
     TEST_COMMAND,
     CHALLENGE_COMMAND,
+    VALORANT_STATUS,
   ]);
 });

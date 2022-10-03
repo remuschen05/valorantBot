@@ -80,3 +80,9 @@ export const CHALLENGE_COMMAND = {
   ],
   type: 1,
 };
+
+export const VALORANT_STATUS = {
+  name: 'status',
+  description: `Check the current status of the Valorant Game Client`,
+  type: 1,
+};
